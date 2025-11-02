@@ -18,7 +18,7 @@ const Footer = () => {
             </a>
         </div>
 
-        <p>Copyright {currentYear} © edukuk.dev - Todos los derechos reservados.</p>
+        <p>Copyright {currentYear} © Jesusdev - Todos los derechos reservados.</p>
      </footer>
   )
 }
