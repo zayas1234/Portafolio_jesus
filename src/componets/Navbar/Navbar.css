@@ -1,0 +1,129 @@
+nav {
+    position : fixed;
+    top : 0;
+    width : 100%;
+    display : flex;
+    flex-direction: row;
+    justify-content : space-between;
+    padding: 1vw 8vw;
+    align-items : center;
+    z-index: 999;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    background: linear-gradient(to right,#f9f9f9, #f3f0ff,#f9f9f9);
+
+}
+
+html.dark nav {
+    background: linear-gradient(to right, #121130, #1e1d4b, #121130);
+    box-shadow: 0 1px 3px rgba(255, 255, 255, 0.1);
+}
+
+nav ul.active{
+    right: 0;
+}
+
+nav img {
+    width : 150px;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    margin-right: 20px;
+    padding: 0 20px;
+   
+
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #232155;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.3s ease;
+
+}
+
+html.dark ul li a {
+    color: #e6eef8;
+}
+
+nav ul li a::after{
+    content: "";
+    width: 0;
+    height: 3px;
+    background: #3931e1;
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: width 0.3s ease;
+}
+
+nav ul li a:hover::after{
+    width: 100%;
+}
+
+nav .fa-solid {
+    display: none;
+    
+}
+
+@media only screen and (max-width: 768px) {
+    nav .fa-solid {
+        display: block;
+        font-size: 25px;
+    }
+
+    nav ul {
+        background: #3931e1;
+        color : #fff;
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 200px;
+        height: 100vh;
+        padding-top: 50px;
+        z-index: 2;
+        transition: right 0.5s;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        align-items: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 25px ;
+
+    }
+
+    nav ul li a {
+        color: #fff;
+
+    }
+
+    nav ul li a:hover {
+       opacity: 0.9;
+
+    }
+
+    nav ul .fa-solid {
+        position: absolute;
+        top: 25px;
+        left: 25px;
+        cursor: pointer;
+    }
+
+    nav ul .fa-bars {
+        color: #232155;
+    }
+}
+
+html.dark .fa-bars {
+    color: #e6eef8;
+}
