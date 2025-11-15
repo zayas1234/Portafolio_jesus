@@ -4,10 +4,12 @@ import logo_dark from "../../assets/logo_dark.png"
 import { useContext, useState } from "react"
 import { ThemeContext } from "../../ThemeContext/ThemeContex" 
 import ThemeToggle from "../ThemeToggle/ThemeToggle"
+import BlogModal from "../Blog/BlogModal"
 
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [blogOpen, setBlogOpen] = useState(false);
   const { theme } = useContext(ThemeContext);
   const handleScoll = (e, sectionId) => {
     e.preventDefault();
@@ -27,14 +29,28 @@ const Navbar = () => {
             <li><a href="skills"  onClick={(e)=> handleScoll(e, "skills")}  >Habilidades</a></li>
             <li><a href="#portfolio"  onClick={(e)=> handleScoll(e, "portfolio")}  >Portafolio</a></li>
             <li><a href="#contact"  onClick={(e)=> handleScoll(e, "contact")}  >Contacto</a></li>
-            <i className="fa-solid fa-xmark"
-            onClick={()=> setMenuOpen(false)}
-            ></i>
+            <li>
+            <button
+                className="nav-btn"
+                onClick={() => {
+                  setBlogOpen(true);
+                  setMenuOpen(false); 
+                }}
+              >
+                Noticias
+              </button>
+            </li>
+              
+           
+            
+
+            <i className="fa-solid fa-xmark"onClick={()=> setMenuOpen(false)}></i>
       </ul>
 
       <ThemeToggle />
 
       <i className="fa-solid fa-bars" onClick={() => setMenuOpen(true)}></i>
+      <BlogModal open={blogOpen} onClose={() => setBlogOpen(false)} />
     </nav>
   )
 }

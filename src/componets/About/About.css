@@ -37,7 +37,7 @@
     color: #f9f9f9;
   }
   
-  /* Sección de experiencia */
+  
   .experience-section {
     display: flex;
     justify-content: center;
@@ -70,7 +70,7 @@
   html.dark .experience p {
     color: #f9f9f9;
   }
-  /* Responsive */
+  
   @media (max-width: 768px) {
     .about-details {
       flex-direction: column;
