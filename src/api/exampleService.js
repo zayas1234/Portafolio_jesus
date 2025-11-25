@@ -1,6 +1,5 @@
-
 const DEFAULT_API = "https://newsdata.io/api/1/latest";
-const DEFAULT_KEY = "pub_0abff4a16d274ef2a53d33ce8b1ef884"; 
+const DEFAULT_KEY = "pub_f845aebedecf4ac98835cb7fb66eea32"; 
 const FALLBACK_KEY = DEFAULT_KEY;
 
 function normalizeResponse(json) {
@@ -136,19 +135,24 @@ export async function fetchNews(limit = 5) {
   
   try {
     const url = new URL(API_URL);
-    
     if (API_URL === DEFAULT_API) {
       url.searchParams.set("apikey", API_KEY);
       url.searchParams.set("q", "Tecnologia");
-      url.searchParams.set("language", "en,es,pt,it"); 
+      url.searchParams.set("language", "en,es,pt,it");
       url.searchParams.set("page", "1");
       url.searchParams.set("category", "technology");
     }
 
-    
+    console.log("[fetchNews] URL ->", url.toString());
     let res = await fetch(url.toString(), {
       headers: { "Accept": "application/json" }
     });
+
+    console.log("[fetchNews] status", res.status);
+    if (!res.ok) {
+      const text = await res.clone().text().catch(()=>null);
+      console.warn("[fetchNews] response body (error):", text);
+    }
 
     if (!res.ok) {
     
